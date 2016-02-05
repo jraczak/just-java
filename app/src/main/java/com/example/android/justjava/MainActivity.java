@@ -132,8 +132,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void increment(View view) {
-        if (quantity == 100) {
-            Toast tooManyCoffeesToast = Toast.makeText(getApplicationContext(), "You cannot order more than 100 coffees", Toast.LENGTH_SHORT);
+        if (quantity == 20) {
+            Toast tooManyCoffeesToast = Toast.makeText(getApplicationContext(), "You cannot order more than 20 coffees", Toast.LENGTH_SHORT);
             tooManyCoffeesToast.show();
             return;
         }
