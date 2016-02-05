@@ -1,5 +1,7 @@
 package com.example.android.justjava;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
@@ -93,11 +95,39 @@ public class MainActivity extends AppCompatActivity {
     private void displayMessage(int price, boolean hasWhippedCream, boolean hasChocolate, String customerName) {
         TextView priceTextView = (TextView) findViewById(R.id.order_summary_text_view);
         String priceNumber = NumberFormat.getCurrencyInstance().format(price);
-        priceTextView.setText("Thank you, " + customerName + "!\n" +
-                "Your order for " + quantity + " coffees has been submitted.\n" +
-                "Your total is " + priceNumber + "\n" +
-                "Whipped Cream: " + hasWhippedCream + "\n" +
-                "Chocolate: " + hasChocolate + "\n");
+
+        String orderDescription = " ";
+        if (hasChocolate && hasWhippedCream) {
+            orderDescription = " coffees with whipped cream and chocolate.";
+        }
+        else if (hasChocolate) {
+            orderDescription = " coffees with chocolate.";
+        }
+        else if (hasWhippedCream) {
+            orderDescription = " coffees with whipped cream.";
+        }
+        else {
+            orderDescription = " coffees.";
+        }
+
+        Intent sendOrderEmail = new Intent(Intent.ACTION_SENDTO);
+        sendOrderEmail.setData(Uri.parse("mailto:"));
+        sendOrderEmail.putExtra(Intent.EXTRA_EMAIL, "jraczak@gmail.com");
+        sendOrderEmail.putExtra(Intent.EXTRA_SUBJECT, "New coffee order from " + customerName);
+        sendOrderEmail.putExtra(Intent.EXTRA_TEXT,
+                "You have a new order from " + customerName + "!\n" +
+                        "The order is for " + quantity + orderDescription + "\n" +
+                        "The total cost is " + priceNumber + "\n"
+                );
+        if (sendOrderEmail.resolveActivity(getPackageManager()) != null) {
+            startActivity(sendOrderEmail);
+        }
+
+//        priceTextView.setText("Thank you, " + customerName + "!\n" +
+//                "Your order for " + quantity + " coffees has been submitted.\n" +
+//                "Your total is " + priceNumber + "\n" +
+//                "Whipped Cream: " + hasWhippedCream + "\n" +
+//                "Chocolate: " + hasChocolate + "\n");
 
     }
 
