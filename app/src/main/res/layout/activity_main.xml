@@ -1,10 +1,12 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parent_scroll_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
+        android:focusableInTouchMode="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -27,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:textAllCaps="true"
+            style="@style/HeaderTextStyle"
         />
 
         <CheckBox
@@ -51,7 +53,7 @@
         <TextView android:text="@string/quantity_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAllCaps="true"/>
+            style="@style/HeaderTextStyle"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -61,7 +63,7 @@
             android:orientation="horizontal">
             <Button
                 android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_height="wrap_content"
                 android:text="-"
                 android:onClick="decrement"/>
 
@@ -69,6 +71,7 @@
             android:text="@string/quantity_value"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:gravity="center_vertical"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginTop="16dp"
@@ -88,7 +91,7 @@
             android:text="@string/price_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAllCaps="true"/>
+            style="@style/HeaderTextStyle"/>
 
         <TextView android:id="@+id/price_text_view"
             android:text="@string/price_value"
@@ -98,7 +101,8 @@
             android:paddingBottom="16dp"
             android:textColor="@android:color/black"/>
 
-        <Button android:text="@string/order_button_label"
+        <Button android:id="@+id/order_button"
+            android:text="@string/order_button_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="submitOrder"/>
