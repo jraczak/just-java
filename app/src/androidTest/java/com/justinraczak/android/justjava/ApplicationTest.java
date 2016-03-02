@@ -1,4 +1,4 @@
-package com.example.android.justjava;
+package com.justinraczak.android.justjava;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

@@ -1,0 +1,43 @@
+start_app
+button_text = "order"
+button_text
+button = query(* {text LIKE[c] button_text})
+button = query(* {"text LIKE[c] button_text"})
+button = query("* {text LIKE[c] button_text}")
+button = query("* {text LIKE[c] '#{button_tex}t}")
+button = query("* {text LIKE[c] '#{button_text}}")
+tap(Calabash::Query.new({marked: button_text})
+)
+tap(Calabash::Query.new({marked: "ORDER"}))
+tap({text: "ORDER"})
+query(* {text: "ORDER"})
+query("* {text: 'ORDER'}")
+query("* {'ORDER'}")
+query("* 'ORDER'")
+query("* ORDER")
+query("* *ORDER*")
+query("* {text LIKE 'ORDER'}")
+query("* {text LIKE '*ORDER*'}")
+query("ORDER")
+query(marked: "ORDER")
+exit
+start_app
+query({text: '-'})
+query({text: 'ORDER'})
+query({id: 'order_button'})
+tap(query({id: 'order_button'}))
+tap({id: 'order_button'})
+exit
+exit
+exit
+install_app
+start_app
+tap({id: 'customer_name_input_field'})
+scroll({id: 'parent_scroll_view'})
+scroll({id: 'parent_scroll_view'}, :up)
+scroll({id: 'parent_scroll_view'}, :down)
+exit
+start_app
+tap({id: 'customer_name_input_field'})
+scroll({id: 'parent_scroll_view'}, :down)
+exit

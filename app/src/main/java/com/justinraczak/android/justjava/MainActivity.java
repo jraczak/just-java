@@ -1,11 +1,9 @@
-package com.example.android.justjava;
+package com.justinraczak.android.justjava;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Editable;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
@@ -14,7 +12,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.NumberFormat;
-import java.util.Currency;
 
 /**
  * This app displays an order form to order coffee.
